@@ -1,0 +1,21 @@
+load("@rules_python//python:defs.bzl", "py_library", "py_binary")
+
+py_library(
+    name = "src_lib",
+    srcs = [
+        "src/data.py",
+        "src/model.py",
+    ],
+)
+
+py_binary(
+    name = "train",
+    srcs = ["src/train.py"],
+    deps = [":src_lib"],
+)
+
+py_binary(
+    name = "infer",
+    srcs = ["src/infer.py"],
+    deps = [":src_lib"],
+)
